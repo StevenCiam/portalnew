@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="Logo TIMEElearning.png" alt="Logo" class="sidebar-logo">
+                <button class="sidebar-close" id="sidebar-close-toggle">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profil Mahasiswa</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-book-open"></i>
+                    <span>Kartu Rencana Studi</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-poll"></i>
+                    <span>Kartu Hasil Studi</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Jadwal Kuliah</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Keuangan</span>
+                </a>
+                <a href="login.html" class="nav-item nav-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <div class="mobile-overlay" id="mobile-overlay"></div>
+
+        <main class="main-content">
+            
+            <header class="header">
+                
+                <button class="header-toggle" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="header-title">
+                    <h1>Selamat Datang, Steven Ciam, S.Kom., M.Kom</h1>
+                    <p>Senang melihat Anda kembali.</p>
+                </div>
+
+                <div class="header-profile">
+                    <i class="fas fa-bell"></i>
+                    <div class="profile-info">
+                        <strong>Steven Ciam, S.Kom., M.Kom</strong>
+                        <span>NIM. 2544000</span>
+                        <span>Class. TI A 25</span>
+                        <span>Merbabu Malam</span>
+                    </div>
+                    <img src="82.png" alt="Foto Profil" class="profile-pic">
+                </div>
+            </header>
+
+            <section class="content-area">
+                
+                <div class="summary-cards">
+                    <div class="card">
+                        <i class="fas fa-star card-icon" style="color: #ffc107;"></i>
+                        <div class="card-info">
+                            <strong>IPK Saat Ini</strong>
+                            <span>3.79</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-book card-icon" style="color: #007bff;"></i>
+                        <div class="card-info">
+                            <strong>Total SKS</strong>
+                            <span>38 SKS</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-check-circle card-icon" style="color: #28a745;"></i>
+                        <div class="card-info">
+                            <strong>Status</strong>
+                            <span>Aktif</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-row">
+                    <div class="content-widget">
+                        <h3><i class="fas fa-bullhorn"></i> Pengumuman Terbaru</h3>
+                        <ul class="announcement-list">
+                            <li>
+                                <strong>11 Okt 2025</strong>
+                                <p>AWS User Group Medan MeetUp X STMIK Time</p>
+                            </li>
+                            <li>
+                                <strong>25 Okt 2025</strong>
+                                <p>Mulai Klub Akademik (XXXXXX)</p>
+                            </li>
+                             <li>
+                                <strong>31 Okt 2025</strong>
+                                <p>Halloween Event W/ TimeMultiSmart</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-widget">
+                        <h3><i class="fas fa-calendar-day"></i> Jadwal Hari Ini</h3>
+                        <ul class="schedule-list">
+                            <li>
+                                <strong>13:00 - 15:00</strong>
+                                <p>Klub Microsoft Excel </p>
+                                <p class="dosen-name">With. Mr. Johanes Terang Kita Perangin Angin, S.Kom., M.TI</p>
+                                <span>Ruang: Lab A 206</span>
+                            </li>
+                             <li>
+                                <strong>19:00 - 21:00</strong>
+                                <p>Konsep Basis Data (TI 22104) </p>
+                                <p class="dosen-name">With. Mr. Octara Pribadi, S.Kom., M.Kom</p>
+                                <span>Ruang: A 302</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const closeToggle = document.getElementById('sidebar-close-toggle');
+        const overlay = document.getElementById('mobile-overlay');
+
+        function openMenu() {
+            sidebar.classList.add('sidebar-visible');
+            overlay.classList.add('visible');
+        }
+        function closeMenu() {
+            sidebar.classList.remove('sidebar-visible');
+            overlay.classList.remove('visible');
+        }
+        menuToggle.addEventListener('click', openMenu);
+        closeToggle.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+    </script>
+</body>
+</html>

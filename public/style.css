@@ -1,0 +1,617 @@
+/* ==================
+   GLOBAL & RESET
+   ================== */
+:root {
+    --primary-color: #004a99; /* Biru tua (MIKA) */
+    --secondary-color: #007bff; /* Biru cerah */
+    --bg-light: #f4f7f6;      /* Latar belakang dashboard */
+    --bg-white: #ffffff;
+    --text-dark: #333;
+    --text-light: #777;
+    --border-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+/* ==================
+   HALAMAN LOGIN (DENGAN ANIMASI)
+   ================== */
+
+/* Definisikan animasi gradient */
+@keyframes animated-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+    /* Latar belakang gradient animasi */
+    background: linear-gradient(
+        -45deg, 
+        #003366, /* Biru Tua */
+        #004a99, /* Biru Primary */
+        #007bff, /* Biru Cerah */
+        #33c3ff  /* Biru Langit */
+    );
+    background-size: 400% 400%;
+    animation: animated-gradient 15s ease infinite; /* Terapkan animasi */
+}
+
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Kotak Login dengan Efek Kaca (Glassmorphism) */
+.login-box {
+    /* Efek Kaca */
+    background: rgba(255, 255, 255, 0.15); /* Transparansi */
+    backdrop-filter: blur(10px); /* Efek Blur */
+    -webkit-backdrop-filter: blur(10px); /* Untuk Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    padding: 30px 40px;
+    border-radius: 15px; /* Sedikit lebih bulat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.login-box h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.login-box p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 25px;
+    transition: color 0.3s; /* Animasi ganti warna pesan error */
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.8); /* Ikon jadi putih */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff; /* Teks input jadi putih */
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.input-group input:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0069d9;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ffffff; /* Link jadi putih */
+    font-weight: 500;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+
+/* ==================
+   HALAMAN DASHBOARD (Umum)
+   ================== */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==================
+   SIDEBAR (MENU KIRI)
+   ================== */
+.sidebar {
+    width: 260px;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0; /* Mencegah sidebar menyusut */
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; /* Tambahkan ini untuk tombol close */
+}
+
+.sidebar-logo {
+    max-width: 120px;
+}
+
+/* TOMBOL CLOSE (Sembunyi di Desktop) */
+.sidebar-close {
+    display: none; 
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    padding-top: 20px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav-item i {
+    width: 30px;
+    font-size: 1.1em;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 21px; /* 25px - 4px */
+}
+
+.nav-logout {
+    margin-top: auto; /* Mendorong logout ke bawah */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==================
+   MAIN CONTENT (ISI KANAN)
+   ================== */
+.main-content {
+    flex-grow: 1;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto; 
+}
+
+/* Header Atas */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* TOMBOL HAMBURGER (Sembunyi di Desktop) */
+.header-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+.header-title h1 {
+    font-size: 1.5em;
+    margin: 0;
+}
+.header-title p {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.header-profile {
+    display: flex;
+    align-items: center;
+}
+
+.header-profile .fa-bell {
+    font-size: 1.2em;
+    margin-right: 20px;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.profile-info {
+    text-align: right;
+    margin-right: 15px;
+}
+.profile-info strong {
+    display: block;
+    font-size: 0.9em;
+}
+.profile-info span {
+    display: block; /* Agar NIM dan Class di baris baru */
+    font-size: 0.8em;
+    color: var(--text-light);
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Area Konten Utama */
+.content-area {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Kartu Ringkasan (IPK, SKS) */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: var(--bg-white);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-icon {
+    font-size: 2em;
+    margin-right: 15px;
+}
+
+.card-info strong {
+    display: block;
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+.card-info span {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+/* Konten baris (Pengumuman & Jadwal) */
+.content-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.content-widget {
+    background-color: var(--bg-white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-widget h3 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    font-size: 1.1em;
+}
+.content-widget h3 i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+/* List Pengumuman & Jadwal */
+.announcement-list,
+.schedule-list {
+    padding-left: 0; /* Hapus padding default <ul> */
+}
+.announcement-list li,
+.schedule-list li {
+    list-style: none;
+    margin-bottom: 15px;
+}
+.announcement-list li {
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
+}
+.announcement-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.announcement-list strong,
+.schedule-list strong {
+    font-size: 0.85em;
+    color: #003366;
+    display: block;
+}
+.schedule-list strong {
+     color: #2cf703;
+}
+.announcement-list p,
+.schedule-list p {
+    margin-top: 5px;
+    font-size: 0.95em;
+}
+.schedule-list p {
+    font-weight: bold;
+    margin: 2px 0;
+}
+.schedule-list span {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+/* === OVERLAY MOBILE === */
+.mobile-overlay {
+    display: none; /* Sembunyi di desktop */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998; /* Di bawah sidebar, di atas konten */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.mobile-overlay.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* === Responsive (untuk HP) === */
+@media (max-width: 992px) {
+    .content-row {
+        grid-template-columns: 1fr; /* Tumpuk widget di HP */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -100%; /* Sembunyikan di luar layar */
+        z-index: 1000;
+        height: 100%;
+        transition: left 0.3s ease; /* Tambahkan transisi */
+    }
+
+    /* KELAS BARU: Saat menu mobile aktif */
+    .sidebar.sidebar-visible {
+        left: 0;
+    }
+
+    /* Tampilkan tombol close di HP */
+    .sidebar-close {
+        display: block;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+    
+    .header {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Tampilkan tombol hamburger di HP */
+    .header-toggle {
+        display: block;
+    }
+
+    /* Kecilkan judul di HP */
+    .header-title h1 {
+        font-size: 1.2rem;
+    }
+    .header-title p {
+        display: none; /* Sembunyikan sub-judul */
+    }
+
+    /* Pindahkan profile ke kanan */
+    .header-profile {
+        margin-left: auto; /* Dorong ke paling kanan */
+    }
+    /* Sembunyikan info NIM/Class di HP (terlalu sempit) */
+    .profile-info {
+        display: none;
+    }
+
+    .content-area {
+        padding: 20px; /* Kurangi padding di HP */
+    }
+}
+
+
+/* =================================
+   REAKSI ANIMASI SHAKE (Login)
+   ================================= */
+@keyframes shake {
+  /* Goyang ke kiri dan kanan */
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+  20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+/* Kelas ini akan ditambahkan oleh JavaScript saat login gagal */
+.login-box.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+
+/* =================================
+   PENAMBAHAN HAK AKSES & RECAPTCHA (Login)
+   ================================= */
+
+/* Label untuk Hak Akses */
+.hak-akses-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+/* Kontainer tombol hak akses */
+.hak-akses-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Tombol hak akses (admin, dosen, mhs) */
+.akses-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* Style Kaca (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Efek hover pada tombol */
+.akses-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Style untuk tombol yang 'aktif' / dipilih */
+.akses-btn.active {
+    background-color: var(--secondary-color); /* Warna biru cerah */
+    border-color: var(--secondary-color);
+    color: white;
+}
+
+
+/* Placeholder untuk reCAPTCHA */
+.recaptcha-placeholder {
+    background: rgba(255, 255, 255, 0.9); /* Dibuat lebih solid agar terbaca */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.recaptcha-placeholder input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.recaptcha-placeholder label {
+    color: #333; /* Teks hitam agar kontras di atas putih */
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+/* Ikon placeholder logo reCAPTCHA */
+.recaptcha-logo {
+    margin-left: auto;
+    color: #999;
+    font-size: 1.5em;
+}
+
+/* =================================
+   WARNA NAMA DOSEN DI JADWAL
+   ================================= */
+
+/* Anda bisa ganti kode warna #3a8a44 
+  ini dengan kode warna lain yang Anda suka.
+  (Contoh: #8a3a3a untuk merah, #3a4a8a untuk ungu)
+*/
+.schedule-list li .dosen-name {
+    color: #f80101; /* Ini adalah warna Merah tua */
+    font-weight: bold; /* Tetap tebal */
+}
